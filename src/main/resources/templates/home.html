@@ -84,6 +84,18 @@
   function addEvent(){
 	  $('#addEventNow').submit();
   }
+  
+  $document.ready(function({
+	  var isAdmin = false;
+	  var role = "<% session.getAttribute("role")%>";
+	  alert(role);
+	  if(role == 'A'){
+		  isAdmin = true;
+	  }
+	  if(!isAdmin) {
+		  $("#addEventLink").hide();
+	  }
+  }));
   </script>
   
  
@@ -118,7 +130,7 @@
 									<li><a href="#blog">Events</a></li>
 									<li><a href="#" onclick="javascript:login()">Login</a></li>
 									<li><a href="#" onclick="javascript:register()">Register</a></li>
-									<li><a href="#" onclick="javascript:addEvent()">Add Event</a></li>
+									<li id="addEventLink"><a href="#" onclick="javascript:addEvent()">Add Event</a></li>
 									<li><a href="#about">About</a></li>
 									<li><a href="#contact">Contact</a></li>
 								</ul>
